@@ -1,16 +1,14 @@
 <div class="main-container">
-    <div class="noFavdiv" *ngIf="favouriteList.length === 0" >
-         
+    <div class="noFavdiv" *ngIf="!favouriteList" > 
       <img
         src="../../../assets/images/icon_nothing.png"
         alt="icon_nothing"
         class="icon_nothing"
       />
       <div class="nothingtext">No Favourites added</div>
-      
     </div>
   
-    <div class="favtopbar" *ngIf="favouriteList.length > 0">
+    <div class="favtopbar" *ngIf="favouriteList">
       <div>{{ favouriteList.length }} City added as favourite</div>
       <!-- <div (click)="openDialog()">Remove All</div> -->
     </div>

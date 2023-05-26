@@ -23,7 +23,7 @@ export class WeatherserviceService implements OnInit{
      (this.http.get(`${this.url}current.json?q=${city}`
     ).subscribe((response)=>{
       this.weatherData.next(response);
-      console.log("get",response)
+      // console.log("get",response)
 
     }),
     (error:any) => {

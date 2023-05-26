@@ -12,9 +12,12 @@ export class HomeComponent implements OnInit{
   weathercitydata:any=[];
   favouriteList:any=[]
   favStatus:boolean=false
+  favstate:any;
   constructor(private weatherService:WeatherserviceService,private homeservice:HomeService){}
   ngOnInit():void{
     this.weatherDetails()
+    // this.recentData(this.weathercitydata)
+    this.favourite()
 
   }
 
@@ -22,9 +25,13 @@ export class HomeComponent implements OnInit{
     this.weatherService.weatherObject$.subscribe((res)=>{
       this.weathercitydata=res;
       console.log("home",this.weathercitydata)
+      this.favourite()
       this.favouriteList=localStorage.getItem('favData')
       this.favouriteList=JSON.parse(this.favouriteList)
-      this.favourite()
+      this.favstate=localStorage.getItem('favstate')
+      if(this.weathercitydata){
+        this.homeservice.recentList(this.weathercitydata);
+      }
     })
   }
  
@@ -48,7 +55,7 @@ export class HomeComponent implements OnInit{
     this.temp = 'Celcius';
   }
   favourite(){
-    let fav=false
+    let fav=false;
     if(this.favouriteList){
       this.favouriteList.map((item:any)=>{
         if(item.location?.name === this.weathercitydata.location?.name){
@@ -61,5 +68,9 @@ export class HomeComponent implements OnInit{
     }else{
       this.favStatus=false
     }
+  }
+
+  recentData(weathercity:any){
+    this.homeservice.recentList(weathercity);
   }
 }

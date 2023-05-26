@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { HomeService } from 'src/app/services/home.service';
 import { WeatherserviceService } from 'src/app/services/weatherservice.service';
 
 @Component({
@@ -15,7 +16,7 @@ export class MainComponent implements OnInit {
   date: any;
   data:any
   sub=new Subscription
-  constructor(private weatherservice:WeatherserviceService){}
+  constructor(private weatherservice:WeatherserviceService,private homeservice:HomeService){}
 
   ngOnInit(): void {
     this.date = new Date();
@@ -23,7 +24,6 @@ export class MainComponent implements OnInit {
 
   handleChange(event: string): void {
     this.weatherservice.searchApi(event)
-
     this.sub=this.weatherservice.searchObject$.subscribe((searchResults: any)=>{
       this.searchResults=searchResults;
       console.log(searchResults)
@@ -32,5 +32,8 @@ export class MainComponent implements OnInit {
   handleCityClick(city: any) {
     this.weatherservice.getWeatherApi(city)
     this.searchResults = [];
+    // this.weatherservice.weatherObject$.subscribe((res)=>{
+    //   this.homeservice.recentList(res)
+    // })
   }
 }
