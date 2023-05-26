@@ -1,0 +1,139 @@
+<div class="main-container">
+  <p class="cityName">
+    {{ weathercitydata?.location?.name }},
+    {{ weathercitydata?.location?.region }}
+  </p>
+  <div class="addfavdiv">
+    <img
+      *ngIf="favStatus === false"
+      src="../../../assets/images/favourite_icon_copy.png"
+      alt="favourite"
+      class="favourite_icon"
+      (click)="addToFavourite(weathercitydata)"
+    />
+
+    <img
+      *ngIf="favStatus === true"
+      src="../../../assets/images/icon_favourite_Active.png"
+      alt="favourite"
+      class="favourite_icon"
+      (click)="removeFavourite(weathercitydata)"
+    />
+    <p class="addfavp">Add to favourite</p>
+  </div>
+  <div class="weatherdiv">
+    <img
+      src="https:{{ weathercitydata?.current?.condition.icon }}"
+      alt="weather_icon"
+      class="weather_icon"
+    />
+
+    <div *ngIf="temp === 'Fahreneit'" class="tempdiv">
+      <div class="notext">
+        {{ (weathercitydata?.current?.temp_f).toFixed(0) }}
+      </div>
+      <div class="tempdiv1">
+        <div class="tempdiv2" (click)="convertToCelcius()">
+          <p class="temptext1">o</p>
+          <p class="temptext2">C</p>
+        </div>
+        <div class="tempdiv3">
+          <div class="tempdiv4">
+            <p class="temptext3">o</p>
+            <p class="temptext4">F</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="temp === 'Celcius'" class="tempdiv">
+      <div class="notext">
+        {{ (weathercitydata?.current?.temp_c).toFixed(0) }}
+      </div>
+      <div class="tempdiv1">
+        <div class="tempdiv3">
+          <div class="tempdiv4">
+            <p class="temptext3">o</p>
+            <p class="temptext4">C</p>
+          </div>
+        </div>
+        <div class="tempdiv2" (click)="convertToFahreneit()">
+          <p class="temptext1">o</p>
+          <p class="temptext2">F</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="temptext5">
+      {{ weathercitydata?.current?.condition?.text }}
+    </div>
+  </div>
+  <div class="line-copy"></div>
+  <div class="grp">
+    <div class="grpdiv">
+      <img
+        src="../../../assets/images/icon_temperature_info.png"
+        alt="icon_temp"
+        class="icon_temp"
+      />
+      <div class="grpdivin">
+        <div class="grptext1">Min - Max</div>
+        <div class="grptext2">
+          {{ weathercitydata?.current?.temp_c }}°-{{
+            weathercitydata?.current?.temp_c
+          }}°
+        </div>
+      </div>
+    </div>
+
+    <div class="grpdiv">
+      <img
+        src="../../../assets/images/icon_precipitation_info.png"
+        alt="icon_prec"
+        class="icon_prec"
+      />
+      <div class="grpdivin">
+        <div class="grptext1">Precipitation</div>
+        <div class="grptext2">{{ weathercitydata?.current?.precip_mm }}%</div>
+      </div>
+    </div>
+
+    <div class="grpdiv">
+      <img
+        src="../../../assets/images/icon_humidity_info.png"
+        alt="icon_humi"
+        class="icon_humi"
+      />
+      <div class="grpdivin">
+        <div class="grptext1">Humidity</div>
+        <div class="grptext2">{{ weathercitydata?.current?.humidity }}%</div>
+      </div>
+    </div>
+
+    <div class="grpdiv">
+      <img
+        src="../../../assets/images/icon_wind_info.png"
+        alt="icon_wind"
+        class="icon_wind"
+      />
+      <div class="grpdivin">
+        <div class="grptext1">Wind</div>
+        <div class="grptext2">{{ weathercitydata?.current?.wind_mph }}mph</div>
+      </div>
+    </div>
+
+    <div class="grpdiv">
+      <img
+        src="../../../assets/images/icon_visibility_info.png"
+        alt="icon_vis"
+        class="icon_vis"
+      />
+      <div class="grpdivin">
+        <div class="grptext1">Visibility</div>
+        <div class="grptext2">
+          {{ weathercitydata?.current?.vis_miles }} mph
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

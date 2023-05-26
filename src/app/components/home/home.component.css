@@ -1,0 +1,180 @@
+.main-container {
+    width: 87vw;
+    height: 100%;
+    /* border: 1px solid; */
+  }
+  .cityName {
+    color: #ffffff;
+    font-size: 24px;
+    font-weight: 500;
+    letter-spacing: 0;
+    line-height: 24px;
+    text-align: left;
+    margin-top: 60px;
+    font-family: Regular;
+  }
+  .addfavdiv {
+    display: flex;
+    flex-direction: "row";
+    align-items: center;
+  }
+  .favourite_icon {
+    width: 20px;
+    height: 20px;
+  }
+  
+  .addfavp {
+    color: #ffffff;
+    font-family: Regular;
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: 0;
+    line-height: 15px;
+    margin-left: 10px;
+  }
+  .weatherdiv {
+    margin-top: 100px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+  .weather_icon {
+    height: 84px;
+    width: 80px;
+  }
+  .tempdiv {
+    display: flex;
+    flex-direction: row;
+    height: 100px;
+  }
+  .tempdiv1 {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15px;
+  }
+  .tempdiv2 {
+    box-sizing: border-box;
+    height: 30px;
+    width: 28px;
+    border: 1px solid #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .tempdiv3 {
+    display: flex;
+    flex-direction: row;
+  }
+  .tempdiv4 {
+    box-sizing: border-box;
+    height: 30px;
+    width: 28px;
+    border: 1px solid #ffffff;
+    background-color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .notext {
+    color: #ffffff;
+    font-family: Regular;
+    font-size: 64px;
+    font-weight: 500;
+    letter-spacing: 0;
+    margin-top: 10px;
+    margin-right: 10px;
+    text-align: center;
+  }
+  .temptext1 {
+    color: #ffffff;
+    font-family: Regular;
+    font-size: 12px;
+    margin-top: -4px;
+  }
+  .temptext2 {
+    color: #ffffff;
+    font-family: Regular;
+    font-size: 16px;
+  }
+  .temptext3 {
+    color: #e32843;
+    font-family: Regular;
+    font-size: 12px;
+    margin-top: -4px;
+  }
+  .temptext4 {
+    color: #e32843;
+    font-family: Regular;
+    font-size: 16px;
+  }
+  
+  .temptext5 {
+    color: #ffffff;
+    font-family: Regular;
+    font-size: 26px;
+    letter-spacing: 0;
+    line-height: 25px;
+    text-align: center;
+  }
+  
+  .line-copy {
+    box-sizing: border-box;
+    height: 1px;
+    margin-top: 100px;
+    border: 1px solid #ffffff;
+    opacity: 0.3;
+  }
+  .grp {
+    display: flex;
+    flex-direction: row;
+    padding: 5rem 7vw;
+    justify-content: space-between;
+  }
+  .grpdiv {
+    height: 50px;
+    width: 120px;
+    display: flex;
+    flex-direction: row;
+  }
+  .icon_temp {
+    height: 32px;
+    width: 16px;
+  }
+  
+  .icon_prec {
+    height: 29px;
+    width: 30px;
+  }
+  
+  .icon_humi {
+    height: 25px;
+    width: 19px;
+  }
+  
+  .icon_wind {
+    height: 22px;
+    width: 32px;
+  }
+  
+  .icon_vis {
+    height: 20px;
+    width: 34px;
+  }
+  .grpdivin {
+    margin-left: 10px;
+  }
+  
+  .grptext1 {
+    color: #ffffff;
+    font-family: Regular;
+    font-size: 18px;
+  }
+  .grptext2 {
+    color: #ffffff;
+    font-family: Regular;
+    font-size: 22px;
+    margin-top: 5px;
+  }
+  

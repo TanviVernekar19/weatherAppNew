@@ -1,0 +1,58 @@
+<div class="main">
+    <!-- <div class="nothingdiv" *ngIf="recentSearchCities.length === 0">
+      <img
+        src="../../../assets/images/icon_nothing.png"
+        alt="icon_nothing"
+        class="icon_nothing"
+      />
+      <div class="nothingtext">No Recent Search</div>
+    </div> -->
+  
+    <div class="favtopbar" >
+        <!-- *ngIf="recentSearchCities.length > 0" -->
+      <div>You recently searched for</div>
+      <div>Clear All</div>
+      <!-- (click)="openDialog()" -->
+    </div>
+    <div class="comprender">
+      <div class="compdiv" >
+        <!-- *ngFor="let data of recentSearchCities" -->
+        <div class="cityname">
+          <!-- {{ data?.data?.location?.name }},
+          {{ data?.data?.location?.region }} -->
+        </div>
+        <div class="compdivin" >
+            <!-- (click)="showWeatherDetails(data)" -->
+          <img
+          alt="comp_icon"
+          class="comp_icon"
+          />
+          <!-- src="https:{{ data?.data?.current?.condition.icon }}" -->
+          <div class="temp">
+            <!-- {{ (data?.data?.current?.temp_c).toFixed(0) }} -->
+            <span class="temp-deg">°c</span>
+          </div>
+          <!-- <div class="description">{{ data?.data?.current?.condition?.text }}</div> -->
+        </div>
+  
+        <img
+         
+          src="../../../assets/images/favourite_icon_copy.png"
+          alt="favourite"
+          class="fav_icon"
+          />
+          <!-- *ngIf="data?.favourite === false" -->
+          <!-- (click)="addToFavourite(data)" -->
+  
+        <img
+          
+          src="../../../assets/images/icon_favourite_Active.png"
+          alt="favourite"
+          class="fav_icon"
+          />
+          <!-- (click)="removeFromFavourite(data)" -->
+        <!-- *ngIf="data?.favourite === true" -->
+      </div>
+    </div>
+  </div>
+  

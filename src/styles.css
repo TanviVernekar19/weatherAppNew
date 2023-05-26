@@ -1,0 +1,22 @@
+
+@font-face {
+    font-family: "Light"; /*Can be any text*/
+    src: url("./assets/fonts/Roboto/Roboto-Light.ttf");
+  }
+  
+  @font-face {
+    font-family: "Bold"; /*Can be any text*/
+    src: url("./assets/fonts/Roboto/Roboto-Bold.ttf");
+  }
+  
+  @font-face {
+    font-family: "Regular"; /*Can be any text*/
+    src: url("./assets/fonts/Roboto/Roboto-Regular.ttf");
+  }
+  
+  @font-face {
+    font-family: "Medium"; /*Can be any text*/
+    src: url("./assets/fonts/Roboto/Roboto-Medium.ttf");
+  }
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
