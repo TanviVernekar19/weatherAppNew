@@ -18,7 +18,6 @@ export class HomeComponent implements OnInit{
     this.weatherDetails()
     // this.recentData(this.weathercitydata)
     this.favourite()
-
   }
 
   weatherDetails(){
@@ -31,6 +30,7 @@ export class HomeComponent implements OnInit{
       this.favstate=localStorage.getItem('favstate')
       if(this.weathercitydata){
         this.homeservice.recentList(this.weathercitydata);
+        this.homeservice.updateFavList(this.weathercitydata)
       }
     })
   }

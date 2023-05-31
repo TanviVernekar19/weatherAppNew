@@ -9,6 +9,11 @@ import { FavouriteComponent } from './components/favourite/favourite.component';
 import { RecentsearchComponent } from './components/recentsearch/recentsearch.component';
 import { FormsModule } from '@angular/forms';
 import { AuthInterceptorService } from './services/auth-interceptor.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialModule } from './material/material.module';
+import { CommonModule } from '@angular/common';
+import { RemoveFavComponent } from './components/remove-fav/remove-fav.component';
+import { RemoveRecentComponent } from './components/remove-recent/remove-recent.component';
 
 @NgModule({
   declarations: [
@@ -16,13 +21,18 @@ import { AuthInterceptorService } from './services/auth-interceptor.service';
     HomeComponent,
     MainComponent,
     FavouriteComponent,
-    RecentsearchComponent
+    RecentsearchComponent,
+    RemoveFavComponent,
+    RemoveRecentComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MaterialModule,
+    CommonModule
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass:AuthInterceptorService,multi:true}],
   bootstrap: [AppComponent]

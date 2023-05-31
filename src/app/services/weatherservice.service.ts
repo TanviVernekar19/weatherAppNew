@@ -46,12 +46,5 @@ export class WeatherserviceService implements OnInit{
     );
   }
 
-  // getHomeWeatherData(city:string){
-  //   this.getWeatherApi(city).subscribe((weatherDetails:any)=>{
-  //     this.weatherData=weatherDetails
-  //     localStorage.setItem('weatherDetails',JSON.stringify(this.weatherData))
-  //     console.log("set",this.weatherData)
-  //   })
-  // }
 
 }

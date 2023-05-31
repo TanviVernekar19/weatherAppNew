@@ -1,0 +1,45 @@
+.are-you-sure-text {
+
+    color: #000000;
+    font-family: Roboto Regular;
+    font-size: 15px;
+    letter-spacing: 0;
+    line-height: 18px;
+    text-align: center;
+  }
+  
+  .yes-no-button {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 250px;
+    margin: auto;
+    margin-top: 50px;
+    align-items: center;
+    text-align: center;
+  
+  }
+  
+  .no-button,
+  .yes-button {
+    padding: 8px 47px;
+    /* height: 5.09%;
+    width: 8.83%; */
+    border-radius: 2px;
+    border: none;
+    color: #000000;
+    font-family: Roboto;
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: 0;
+    line-height: 18px;
+    text-align: center;
+    background-color: transparent;
+  }
+  .yes-button{
+    background-color: #F76B1C;
+  }
+  
+  .dilog {
+    padding: 44px;
+  }
