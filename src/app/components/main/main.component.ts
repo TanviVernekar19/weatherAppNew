@@ -24,11 +24,13 @@ export class MainComponent implements OnInit {
   }
 
   handleChange(event: string): void {
-    this.weatherservice.searchApi(event)
-    this.sub=this.weatherservice.searchObject$.subscribe((searchResults: any)=>{
-      this.searchResults=searchResults;
-      console.log(searchResults)
-    })
+    if(event.length >= 3){
+      this.weatherservice.searchApi(event)
+      this.sub=this.weatherservice.searchObject$.subscribe((searchResults: any)=>{
+        this.searchResults=searchResults;
+        console.log(searchResults)
+      })
+    }
   }
   handleCityClick(city: any) {
     this.weatherservice.getWeatherApi(city)

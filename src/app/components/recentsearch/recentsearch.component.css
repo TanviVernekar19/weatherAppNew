@@ -1,5 +1,6 @@
 .main {
-    width: 87vw;
+     width: 100%;
+    min-width: 890px;
     height: 80vh;
   }
   .nothingdiv {
@@ -41,7 +42,7 @@
   }
   
   .compdiv {
-    height: 73px;
+    min-height: 73px;
     background-color: rgba(255, 255, 255, 0.2);
     display: flex;
     flex-direction: row;
@@ -71,14 +72,14 @@
     font-size: 16px;
     font-weight: 500;
     font-family: Medium;
-    width: 15vw;
+    width: 20%;
   }
   .temp {
     color: #ffffff;
     font-size: 32px;
     font-weight: 500;
     font-family: Medium;
-    width: 5vw;
+    min-width: 75px;
     margin-left: 3vw;
   }
   .temp-deg{
@@ -95,7 +96,7 @@
     display: flex;
     text-align: center;
     align-items: flex-start;
-    width: 12vw;
+    min-width: 28vw;
     margin-left: 3vw;
   }
   

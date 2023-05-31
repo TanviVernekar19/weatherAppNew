@@ -8,6 +8,7 @@ import { WeatherserviceService } from './services/weatherservice.service';
 })
 export class AppComponent implements OnInit{
   title = 'weatherAppNew';
+
   constructor(private weatherservice:WeatherserviceService){}
   
     ngOnInit(){
