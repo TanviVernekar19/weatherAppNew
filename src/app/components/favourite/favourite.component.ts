@@ -42,20 +42,6 @@ navigateToHome(data:any){
 this.weatherservice.weatherData.next(data)
 this.router.navigate([''])
 }
-// favourite(fav:any,data:any){
-//   let fav1=false
-//   if(this.favouriteList){
-//     this.favouriteList.map( (item:any) => {
-//       if(item.location?.name === this.favouriteList.location?.name){
-//        return fav1 = true
-//       }
-//     })
-//   }
-//   // if(fav){
-//   //   this.favStatus=true
-//   // }else{
-//   //   this.favStatus=false
-//   // }
-// }
+
 
 }

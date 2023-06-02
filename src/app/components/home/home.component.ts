@@ -27,7 +27,7 @@ export class HomeComponent implements OnInit{
       this.favourite()
       this.favouriteList=localStorage.getItem('favData')
       this.favouriteList=JSON.parse(this.favouriteList)
-      this.favstate=localStorage.getItem('favstate')
+      // this.favstate=localStorage.getItem('favstate')
       if(this.weathercitydata){
         this.homeservice.recentList(this.weathercitydata);
         this.homeservice.updateFavList(this.weathercitydata)
