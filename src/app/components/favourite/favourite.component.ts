@@ -17,9 +17,12 @@ export class FavouriteComponent implements OnInit{
 constructor(private homeservice:HomeService,private dialog:MatDialog,private weatherservice:WeatherserviceService,private router:Router){}
 
 ngOnInit(): void {
-  this.favouriteList=localStorage.getItem('favData')
-  this.favouriteList=JSON.parse(this.favouriteList)
-  // this.favNew=this.favouriteList
+  // this.favouriteList=localStorage.getItem('favData')
+  // this.favouriteList=JSON.parse(this.favouriteList)
+  this.homeservice.FavList$.subscribe((res)=>{
+    // console.log('res',res)
+    this.favouriteList=res
+  })
 }
   
 openDialog(): void {
@@ -31,8 +34,12 @@ openDialog(): void {
 }
 removeFavourite(weathercitydata:any){
   this.homeservice.removeFav(weathercitydata);
-  this.favouriteList=localStorage.getItem('favData')
-  this.favouriteList=JSON.parse(this.favouriteList)
+  // this.favouriteList=localStorage.getItem('favData')
+  // this.favouriteList=JSON.parse(this.favouriteList)
+  this.homeservice.FavList$.subscribe((res)=>{
+    // console.log('res',res)
+    this.favouriteList=res
+  })
 }
 clearAllFav(){
  localStorage.removeItem('favData')

@@ -17,17 +17,20 @@ export class HomeComponent implements OnInit{
   ngOnInit():void{
     this.weatherDetails()
     // this.recentData(this.weathercitydata)
-    this.favourite()
+    // this.favourite()
   }
 
   weatherDetails(){
     this.weatherService.weatherObject$.subscribe((res)=>{
       this.weathercitydata=res;
-      console.log("home",this.weathercitydata)
-      this.favourite()
-      this.favouriteList=localStorage.getItem('favData')
-      this.favouriteList=JSON.parse(this.favouriteList)
-      // this.favstate=localStorage.getItem('favstate')
+      // this.favourite()
+      // this.favouriteList=localStorage.getItem('favData')
+      // this.favouriteList=JSON.parse(this.favouriteList)
+   
+      this.homeservice.FavList$.subscribe((res)=>{
+        this.favouriteList=res
+        this.favourite()
+      })
       if(this.weathercitydata){
         this.homeservice.recentList(this.weathercitydata);
         this.homeservice.updateFavList(this.weathercitydata)
@@ -37,15 +40,22 @@ export class HomeComponent implements OnInit{
  
   addToFavourite(weathercitydata:any){
   this.homeservice.addToFav(weathercitydata);
-  this.favouriteList=localStorage.getItem('favData')
-  this.favouriteList=JSON.parse(this.favouriteList)
-  this.favourite()
+  // this.favouriteList=localStorage.getItem('favData')
+  // this.favouriteList=JSON.parse(this.favouriteList)
+  this.homeservice.FavList$.subscribe((res)=>{
+    
+    this.favouriteList=res
+    this.favourite()
+  })
   }
   removeFavourite(weathercitydata:any){
     this.homeservice.removeFav(weathercitydata);
-    this.favouriteList=localStorage.getItem('favData')
-    this.favouriteList=JSON.parse(this.favouriteList)
-    this.favourite()
+    // this.favouriteList=localStorage.getItem('favData')
+    // this.favouriteList=JSON.parse(this.favouriteList)
+    this.homeservice.FavList$.subscribe((res)=>{
+      this.favouriteList=res
+      this.favourite()
+    })
  }
 
   convertToFahreneit() {

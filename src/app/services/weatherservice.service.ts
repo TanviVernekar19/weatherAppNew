@@ -12,6 +12,7 @@ export class WeatherserviceService implements OnInit{
   error = new Subject<string>();
   weatherData:BehaviorSubject<any>=new BehaviorSubject<any>({})
   weatherObject$:Observable<any>=this.weatherData.asObservable();
+  
   searchData:BehaviorSubject<any>=new BehaviorSubject<any>([])
   searchObject$:Observable<any>=this.searchData.asObservable();
   url= environment.API_URL;
@@ -28,7 +29,7 @@ export class WeatherserviceService implements OnInit{
     }),
     (error:any) => {
       this.error.next(error.message);
-      console.log(error.message)
+      // console.log(error.message)
     }
     );
   }
@@ -37,11 +38,11 @@ export class WeatherserviceService implements OnInit{
    (this.http.get(`${this.url}search.json?q=${text}`
     ).subscribe((response)=>{
       this.searchData.next(response)
-      console.log("search",response)
+      // console.log("search",response)
     }),
     (error:any) => {
       this.error.next(error.message);
-      console.log(error.message)
+      // console.log(error.message)
     }
     );
   }

@@ -1,5 +1,5 @@
 <div class="main-container">
-    <div class="noFavdiv" *ngIf="!favouriteList" > 
+    <div class="noFavdiv" *ngIf="favouriteList?.length === null || favouriteList?.length === 0" > 
       <img
         src="../../../assets/images/icon_nothing.png"
         alt="icon_nothing"
@@ -8,7 +8,7 @@
       <div class="nothingtext">No Favourites added</div>
     </div>
   
-    <div class="favtopbar" *ngIf="favouriteList">
+    <div class="favtopbar" *ngIf="favouriteList?.length >= 1">
       <div>{{ favouriteList.length }} City added as favourite</div>
       <div (click)="openDialog()">Remove All</div>
     </div>
@@ -30,25 +30,6 @@
           </div>
           <div class="fav-descp">{{ data?.current?.condition?.text }}</div>
         </div>
-        <!-- <div *ngFor="let fav of favNew" >
-          {{favourite(fav,data)}}
-          <div *ngIf="fav1 === true" >
-            <img
-            src="../../../assets/images/icon_favourite_Active.png"
-            alt="favourite"
-            class="fav_icon"
-            (click)="removeFavourite(data)"
-            />
-          </div>
-          <div *ngIf="favourite.fav1 === false">
-            <img
-            src="../../../assets/images/favourite_icon_copy.png"
-            alt="favourite"
-            class="fav_icon"
-            (click)="removeFavourite(data)"
-            />
-          </div>
-        </div> -->
         
         <img
         src="../../../assets/images/icon_favourite_Active.png"

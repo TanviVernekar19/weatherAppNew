@@ -26,27 +26,40 @@ export class RecentsearchComponent implements OnInit {
     private dialog: MatDialog
   ) {}
   ngOnInit(): void {
-    this.recentCities = localStorage.getItem('recentData');
-    this.recentCities = JSON.parse(this.recentCities);
-    this.favouriteList = localStorage.getItem('favData');
-    this.favouriteList = JSON.parse(this.favouriteList);
-    // this.favstate=localStorage.getItem('favstate')
+    // this.recentCities = localStorage.getItem('recentData');
+    // this.recentCities = JSON.parse(this.recentCities);
+
+    this.homeservice.RecentList$.subscribe((res) => {
+      this.recentCities = res;
+    });
+    this.homeservice.FavList$.subscribe((res) => {
+      this.favouriteList = res;
+
+    });
     this.recentState();
+
+    // this.favouriteList = localStorage.getItem('favData');
+    // this.favouriteList = JSON.parse(this.favouriteList);
   }
 
   recentState() {
     this.recentCities.map((item: any, id: number) => {
       if (this.favouriteList) {
+        let state = false
         this.favouriteList.map((ele: any) => {
           if (item.location?.name === ele.location?.name) {
-            // item?.favouritestate=true;
-            // console.log(`this.recentCities[${id}].favouritestate`,this.recentCities[id].favouritestate)
-            this.recentCities[id].favouritestate = true;
-          }
+            state = true
+          } 
         });
+        if (state){
+          this.recentCities[id].favouritestate = true;
+        } else {
+          this.recentCities[id].favouritestate = false;
+        }
+      } else {
+        item.favouritestate = false;
       }
     });
-    console.log('this.recentCities', this.recentCities);
   }
   openDialog(): void {
     const dialogRef = this.dialog.open(RemoveRecentComponent, {
@@ -56,13 +69,25 @@ export class RecentsearchComponent implements OnInit {
     });
   }
   addToFavouriteRecent(weathercitydata: any) {
-    weathercitydata.favouritestate = true;
     this.homeservice.addToFav(weathercitydata);
+    this.homeservice.FavList$.subscribe((res) => {
+      this.favouriteList = res;
+      this.recentState();
+    });
   }
 
   removeFromFavouriteRecent(weathercitydata: any) {
-    weathercitydata.favouritestate = false;
     this.homeservice.removeFav(weathercitydata);
+    this.homeservice.FavList$.subscribe((res) => {
+      this.favouriteList = res;
+    });
+    this.recentCities?.map((item: any, id: number) => {
+      if (item.location?.name === weathercitydata.location?.name) {
+        this.recentCities[id].favouritestate = false;
+        // console.log("false fav null",id,  this.recentCities[id])
+      }
+    });
+
   }
 
   navigateToHome(data: any) {

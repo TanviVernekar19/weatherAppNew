@@ -28,7 +28,7 @@ export class MainComponent implements OnInit {
       this.weatherservice.searchApi(event)
       this.sub=this.weatherservice.searchObject$.subscribe((searchResults: any)=>{
         this.searchResults=searchResults;
-        console.log(searchResults)
+        // console.log(searchResults)
       })
     }
   }

@@ -7,13 +7,17 @@
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
+    overflow-y: scroll;
+    overflow-x: scroll;
+
   }
   .mainsubconatiner {
-    height: 100vh;
+    height: 100%;
     margin: 0px 7vw;
     padding: 5vh 0px;
     display: flex;
     flex-direction: column;
+  
   }
   
   .webtopbar {
@@ -24,6 +28,7 @@
     min-width: 890x;
     justify-content: space-between;
     align-items: center;
+   
     
   }
   .list-container {
@@ -33,6 +38,7 @@
     margin-top: 40px;
     position: absolute;
     z-index: 1;
+
   }
   .list-container-text {
     height: max-content;
@@ -42,6 +48,7 @@
     right: 95px;
     font-family: Regular;
     text-align: center;
+ 
   }
   
   .webinputfielddiv {
@@ -71,6 +78,7 @@
     padding-left: 10px;
     font-family: Light;
     opacity: 0.8;
+  
   
   }
   .webinputfield:focus {
@@ -103,6 +111,7 @@
   
     /* width: 70%; */
     min-width: 890px;
+ 
   }
   .navbarin {
 
@@ -119,6 +128,7 @@
     border: 1px solid #ffffff;
     opacity: 0.3;
     margin-top: -10px;
+ 
   }
   
   .nav-labels {
