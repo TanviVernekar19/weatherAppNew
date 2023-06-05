@@ -1,70 +1,71 @@
 <div class="main-container">
-    <div class="mainsubconatiner">
-      <div class="webtopbar">
-        <img
-          src="../../../assets/images/logo_web.png"
-          alt="weblogo"
-          class="weblogo"
+  <div class="mainsubconatiner">
+    <div class="webtopbar">
+      <img
+        src="../../../assets/images/logo_web.png"
+        alt="weblogo"
+        class="weblogo"
+      />
+      <div class="webinputfielddiv">
+        <input
+          class="webinputfield"
+          placeholder="Search City"
+          type="text"
+          name="cityName"
+          [(ngModel)]="cityName"
+          (ngModelChange)="handleChange($event)"
         />
-        <div class="webinputfielddiv">
-          <input
-            class="webinputfield"
-            placeholder="Search City"
-            type="text"
-            name="cityName"
-            [(ngModel)]="cityName"
-            (ngModelChange)="handleChange($event)"
-          />
-          <img
-            src="../../../assets/images/icon_search_white.png"
-            alt="logo_search_web"
-            class="logo_search_web"
-          />
-        </div>
+        <img
+          src="../../../assets/images/icon_search_white.png"
+          alt="logo_search_web"
+          class="logo_search_web"
+        />
       </div>
-      <div class="list-container">
-        <div class="list-container-text">
-          <p
-            (click)="handleCityClick(city.name)"
-            *ngFor="let city of searchResults"
-          >
-            {{ city.name }}
-          </p>
-        </div>
-      </div>
-  
-      <div class="navbar">
-        <div class="navbarin">
-          <div
-            class="nav-labels"
-            [routerLinkActive]="active"
-            routerLink="/"
-            [routerLinkActiveOptions]="{ exact: true }"
-          >
-            HOME
-          </div>
-  
-          <div
-            class="nav-labels"
-            routerLink="favourite"
-            [routerLinkActive]="active"
-          >
-            FAVOURITE
-          </div>
-  
-          <div class="nav-labels" routerLink="recent" [routerLinkActive]="active">
-            RECENT SEARCH
-          </div>
-        </div>
-        <p class="date-time">
-          {{ date | date : "E" | titlecase }},&nbsp;{{
-            date | date : "mediumDate" | titlecase
-          }}&nbsp;&nbsp;&nbsp;&nbsp;{{ date | date : "shortTime" | uppercase }}
+    </div>
+    <div class="list-container">
+      <div class="list-container-text">
+        <p
+          (click)="handleCityClick(city.name)"
+          *ngFor="let city of searchResults"
+        >
+          {{ city.name }}
         </p>
       </div>
-      <div class="line"></div>
-  
-      <router-outlet />
     </div>
+
+    <div class="navbar">
+      <div class="navbarin">
+        <div
+          class="nav-labels"
+          [routerLinkActive]="active"
+          routerLink="/"
+          [routerLinkActiveOptions]="{ exact: true }"
+          style="cursor: pointer;"
+        >
+          HOME
+        </div>
+
+        <div
+          class="nav-labels"
+          routerLink="favourite"
+          [routerLinkActive]="active"
+          style="cursor: pointer;"
+        >
+          FAVOURITE
+        </div>
+
+        <div class="nav-labels" routerLink="recent" [routerLinkActive]="active"
+        style="cursor: pointer;">
+          RECENT SEARCH
+        </div>
+      </div>
+      <p class="date-time">
+        {{ date | date : "E" | titlecase }},&nbsp;{{
+          date | date : "mediumDate" | titlecase
+        }}&nbsp;&nbsp;&nbsp;&nbsp;{{ date | date : "shortTime" | uppercase }}
+      </p>
+    </div>
+    <div class="line"></div>
+    <router-outlet />
   </div>
-  
+</div>

@@ -5,58 +5,50 @@ import { WeatherserviceService } from 'src/app/services/weatherservice.service';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  styleUrls: ['./home.component.css'],
 })
-export class HomeComponent implements OnInit{
+export class HomeComponent implements OnInit {
   temp: string = 'Celcius';
-  weathercitydata:any=[];
-  favouriteList:any=[]
-  favStatus:boolean=false
-  favstate:any;
-  constructor(private weatherService:WeatherserviceService,private homeservice:HomeService){}
-  ngOnInit():void{
-    this.weatherDetails()
-    // this.recentData(this.weathercitydata)
-    // this.favourite()
+  weathercitydata: any = [];
+  favouriteList: any = [];
+  favStatus: boolean = false;
+  favstate: any;
+  constructor(
+    private weatherService: WeatherserviceService,
+    private homeservice: HomeService
+  ) {}
+  ngOnInit(): void {
+    this.weatherDetails();
   }
 
-  weatherDetails(){
-    this.weatherService.weatherObject$.subscribe((res)=>{
-      this.weathercitydata=res;
-      // this.favourite()
-      // this.favouriteList=localStorage.getItem('favData')
-      // this.favouriteList=JSON.parse(this.favouriteList)
-   
-      this.homeservice.FavList$.subscribe((res)=>{
-        this.favouriteList=res
-        this.favourite()
-      })
-      if(this.weathercitydata){
+  weatherDetails() {
+    this.weatherService.weatherObject$.subscribe((res) => {
+      this.weathercitydata = res;
+      this.homeservice.FavList$.subscribe((res) => {
+        this.favouriteList = res;
+        this.favourite();
+      });
+      if (this.weathercitydata) {
         this.homeservice.recentList(this.weathercitydata);
-        this.homeservice.updateFavList(this.weathercitydata)
+        this.homeservice.updateFavList(this.weathercitydata);
       }
-    })
+    });
   }
- 
-  addToFavourite(weathercitydata:any){
-  this.homeservice.addToFav(weathercitydata);
-  // this.favouriteList=localStorage.getItem('favData')
-  // this.favouriteList=JSON.parse(this.favouriteList)
-  this.homeservice.FavList$.subscribe((res)=>{
-    
-    this.favouriteList=res
-    this.favourite()
-  })
+
+  addToFavourite(weathercitydata: any) {
+    this.homeservice.addToFav(weathercitydata);
+    this.homeservice.FavList$.subscribe((res) => {
+      this.favouriteList = res;
+      this.favourite();
+    });
   }
-  removeFavourite(weathercitydata:any){
+  removeFavourite(weathercitydata: any) {
     this.homeservice.removeFav(weathercitydata);
-    // this.favouriteList=localStorage.getItem('favData')
-    // this.favouriteList=JSON.parse(this.favouriteList)
-    this.homeservice.FavList$.subscribe((res)=>{
-      this.favouriteList=res
-      this.favourite()
-    })
- }
+    this.homeservice.FavList$.subscribe((res) => {
+      this.favouriteList = res;
+      this.favourite();
+    });
+  }
 
   convertToFahreneit() {
     this.temp = 'Fahreneit';
@@ -64,23 +56,23 @@ export class HomeComponent implements OnInit{
   convertToCelcius() {
     this.temp = 'Celcius';
   }
-  favourite(){
-    let fav=false;
-    if(this.favouriteList){
-      this.favouriteList.map((item:any)=>{
-        if(item.location?.name === this.weathercitydata.location?.name){
-          fav = true
+  favourite() {
+    let fav = false;
+    if (this.favouriteList) {
+      this.favouriteList.map((item: any) => {
+        if (item.location?.name === this.weathercitydata.location?.name) {
+          fav = true;
         }
-      })
+      });
     }
-    if(fav){
-      this.favStatus=true
-    }else{
-      this.favStatus=false
+    if (fav) {
+      this.favStatus = true;
+    } else {
+      this.favStatus = false;
     }
   }
 
-  recentData(weathercity:any){
+  recentData(weathercity: any) {
     this.homeservice.recentList(weathercity);
   }
 }

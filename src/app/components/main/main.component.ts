@@ -7,38 +7,39 @@ import { WeatherserviceService } from 'src/app/services/weatherservice.service';
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
-  styleUrls: ['./main.component.css']
+  styleUrls: ['./main.component.css'],
 })
 export class MainComponent implements OnInit {
-
   cityName: string = '';
   searchResults: any = [];
   active = 'active';
   date: any;
-  data:any
-  sub = new Subscription
-  constructor(private weatherservice:WeatherserviceService,private homeservice:HomeService,private router:Router){}
+  data: any;
+  sub = new Subscription();
+  constructor(
+    private weatherservice: WeatherserviceService,
+    private homeservice: HomeService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.date = new Date();
   }
 
   handleChange(event: string): void {
-    if(event.length >= 3){
-      this.weatherservice.searchApi(event)
-      this.sub=this.weatherservice.searchObject$.subscribe((searchResults: any)=>{
-        this.searchResults=searchResults;
-        // console.log(searchResults)
-      })
+    if (event.length >= 3) {
+      this.weatherservice.searchApi(event);
+      this.sub = this.weatherservice.searchObject$.subscribe(
+        (searchResults: any) => {
+          this.searchResults = searchResults;
+        }
+      );
     }
   }
   handleCityClick(city: any) {
-    this.weatherservice.getWeatherApi(city)
+    this.weatherservice.getWeatherApi(city);
     this.searchResults = [];
-    this.router.navigate([''])
-    this.cityName=''
-    // this.weatherservice.weatherObject$.subscribe((res)=>{
-    //   this.homeservice.recentList(res)
-    // })
+    this.router.navigate(['']);
+    this.cityName = '';
   }
 }

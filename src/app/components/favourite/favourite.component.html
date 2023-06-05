@@ -10,7 +10,7 @@
   
     <div class="favtopbar" *ngIf="favouriteList?.length >= 1">
       <div>{{ favouriteList.length }} City added as favourite</div>
-      <div (click)="openDialog()">Remove All</div>
+      <div (click)="openDialog()" style="cursor: pointer;">Remove All</div>
     </div>
     <div class="comprender">
       <div class="compdiv"  *ngFor="let data of favouriteList"  (click)="navigateToHome(data)">

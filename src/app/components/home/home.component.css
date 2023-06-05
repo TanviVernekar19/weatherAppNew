@@ -1,8 +1,8 @@
 .main-container {
-    width: 100%;
-    height: 100%;
+    /* width: 100vw;  */
+    height:700px;
     min-width: 890px;
-    /* border: 1px solid; */
+    
   }
   .cityName {
     color: #ffffff;
@@ -22,6 +22,7 @@
   .favourite_icon {
     width: 20px;
     height: 20px;
+    cursor: pointer;
   }
   
   .addfavp {
@@ -47,6 +48,7 @@
     display: flex;
     flex-direction: row;
     height: 100px;
+    cursor: pointer;
   }
   .tempdiv1 {
     display: flex;
@@ -130,7 +132,8 @@
   .grp {
     display: flex;
     flex-direction: row;
-    padding: 5rem 7vw;
+    /* padding: 5rem 7vw; */
+    margin: 70px;
     justify-content: space-between;
   }
   .grpdiv {

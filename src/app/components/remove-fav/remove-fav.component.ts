@@ -13,5 +13,4 @@ export class RemoveFavComponent implements OnInit{
   }
 
 
-
 }

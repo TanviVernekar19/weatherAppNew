@@ -13,7 +13,7 @@
 
   <div class="favtopbar" *ngIf="recentCities?.length >= 1">
     <div>You recently searched for</div>
-    <div (click)="openDialog()">Clear All</div>
+    <div (click)="openDialog()" style="cursor: pointer;">Clear All</div>
   </div>
   <div class="comprender">
     <div class="compdiv" *ngFor="let data of recentCities">

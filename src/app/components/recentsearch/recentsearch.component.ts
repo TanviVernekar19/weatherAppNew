@@ -26,32 +26,25 @@ export class RecentsearchComponent implements OnInit {
     private dialog: MatDialog
   ) {}
   ngOnInit(): void {
-    // this.recentCities = localStorage.getItem('recentData');
-    // this.recentCities = JSON.parse(this.recentCities);
-
     this.homeservice.RecentList$.subscribe((res) => {
       this.recentCities = res;
     });
     this.homeservice.FavList$.subscribe((res) => {
       this.favouriteList = res;
-
     });
     this.recentState();
-
-    // this.favouriteList = localStorage.getItem('favData');
-    // this.favouriteList = JSON.parse(this.favouriteList);
   }
 
   recentState() {
     this.recentCities.map((item: any, id: number) => {
       if (this.favouriteList) {
-        let state = false
+        let state = false;
         this.favouriteList.map((ele: any) => {
           if (item.location?.name === ele.location?.name) {
-            state = true
-          } 
+            state = true;
+          }
         });
-        if (state){
+        if (state) {
           this.recentCities[id].favouritestate = true;
         } else {
           this.recentCities[id].favouritestate = false;
@@ -84,10 +77,8 @@ export class RecentsearchComponent implements OnInit {
     this.recentCities?.map((item: any, id: number) => {
       if (item.location?.name === weathercitydata.location?.name) {
         this.recentCities[id].favouritestate = false;
-        // console.log("false fav null",id,  this.recentCities[id])
       }
     });
-
   }
 
   navigateToHome(data: any) {
@@ -98,5 +89,6 @@ export class RecentsearchComponent implements OnInit {
   clearAllRecent() {
     localStorage.removeItem('recentData');
     this.recentCities = null;
+    this.homeservice.RecentList.next([])
   }
 }
