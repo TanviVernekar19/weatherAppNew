@@ -44,7 +44,8 @@ export class FavouriteComponent implements OnInit {
     this.homeservice.FavList.next([]);
   }
   navigateToHome(data: any) {
-    this.weatherservice.weatherData.next(data);
+    // this.weatherservice.weatherData.next(data);
+    this.weatherservice.getWeatherApi(data?.name);
     this.router.navigate(['']);
   }
 }

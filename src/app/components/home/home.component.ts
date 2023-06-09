@@ -24,6 +24,7 @@ export class HomeComponent implements OnInit {
   weatherDetails() {
     this.weatherService.weatherObject$.subscribe((res) => {
       this.weathercitydata = res;
+      console.log(res)
       this.homeservice.FavList$.subscribe((res) => {
         this.favouriteList = res;
         this.favourite();
@@ -36,7 +37,7 @@ export class HomeComponent implements OnInit {
   }
 
   addToFavourite(weathercitydata: any) {
-    this.homeservice.addToFav(weathercitydata);
+    this.homeservice.addToFav(weathercitydata,"home");
     this.homeservice.FavList$.subscribe((res) => {
       this.favouriteList = res;
       this.favourite();
@@ -60,7 +61,7 @@ export class HomeComponent implements OnInit {
     let fav = false;
     if (this.favouriteList) {
       this.favouriteList.map((item: any) => {
-        if (item.location?.name === this.weathercitydata.location?.name) {
+        if (item?.name === this.weathercitydata.location?.name) {
           fav = true;
         }
       });

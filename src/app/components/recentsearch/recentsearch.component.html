@@ -16,38 +16,43 @@
     <div (click)="openDialog()" style="cursor: pointer;">Clear All</div>
   </div>
   <div class="comprender">
-    <div class="compdiv" *ngFor="let data of recentCities">
-      <div class="cityname">
-        {{ data?.location?.name }},
-        {{ data?.location?.region }}
-      </div>
-      <div class="compdivin" (click)="navigateToHome(data)">
-        <img
-          src="https:{{ data?.current?.condition.icon }}"
-          alt="comp_icon"
-          class="comp_icon"
-        />
-        <div class="temp">
-          {{ (data?.current?.temp_c).toFixed(0) }}
-          <span class="temp-deg">°c</span>
+    <div class="compdiv" *ngFor="let data of recentCities" >
+      <div  class="despdiv" (click)="navigateToHome(data)">
+        <div class="cityname">
+          {{ data?.name }},
+          {{ data?.region }}
         </div>
-        <div class="description">{{ data?.current?.condition?.text }}</div>
+        <div class="compdivin" >
+          <img
+            src="https:{{ data?.icon }}"
+            alt="comp_icon"
+            class="comp_icon"
+          />
+          <div class="temp">
+            {{ (data?.temp_c).toFixed(0) }}
+            <span class="temp-deg">°c</span>
+          </div>
+          <div class="description">{{ data?.text }}</div>
+        </div>
       </div>
-     
-      <img
-        src="../../../assets/images/favourite_icon_copy.png"
-        alt="favourite"
-        class="fav_icon"
-        *ngIf="data.favouritestate === false"
-        (click)="addToFavouriteRecent(data)"
-      />
-      <img
-        src="../../../assets/images/icon_favourite_Active.png"
-        alt="favourite"
-        class="fav_icon"
-        *ngIf="data.favouritestate === true"
-        (click)="removeFromFavouriteRecent(data)"
-      />
+    
+      <div>
+        <img
+          src="../../../assets/images/favourite_icon_copy.png"
+          alt="favourite"
+          class="fav_icon"
+          *ngIf="data.favouritestate === false"
+          (click)="addToFavouriteRecent(data)"
+        />
+        <img
+          src="../../../assets/images/icon_favourite_Active.png"
+          alt="favourite"
+          class="fav_icon"
+          *ngIf="data.favouritestate === true"
+          (click)="removeFromFavouriteRecent(data)"
+        />
+      </div>
+
     </div>
   </div>
 </div>

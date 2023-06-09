@@ -40,7 +40,7 @@ export class RecentsearchComponent implements OnInit {
       if (this.favouriteList) {
         let state = false;
         this.favouriteList.map((ele: any) => {
-          if (item.location?.name === ele.location?.name) {
+          if (item?.name === ele?.name) {
             state = true;
           }
         });
@@ -62,7 +62,7 @@ export class RecentsearchComponent implements OnInit {
     });
   }
   addToFavouriteRecent(weathercitydata: any) {
-    this.homeservice.addToFav(weathercitydata);
+    this.homeservice.addToFav(weathercitydata,"favList");
     this.homeservice.FavList$.subscribe((res) => {
       this.favouriteList = res;
       this.recentState();
@@ -75,14 +75,15 @@ export class RecentsearchComponent implements OnInit {
       this.favouriteList = res;
     });
     this.recentCities?.map((item: any, id: number) => {
-      if (item.location?.name === weathercitydata.location?.name) {
+      if (item?.name === weathercitydata?.name) {
         this.recentCities[id].favouritestate = false;
       }
     });
   }
 
   navigateToHome(data: any) {
-    this.weatherservice.weatherData.next(data);
+    // this.weatherservice.weatherData.next(data);
+    this.weatherservice.getWeatherApi(data?.name);
     this.router.navigate(['']);
   }
 

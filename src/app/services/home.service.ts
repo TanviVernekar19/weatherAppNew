@@ -11,6 +11,7 @@ export class HomeService {
   recentArray: any = [];
   recentLocal: any = [];
   favstate: any;
+  localdata: any = [];
 
   FavList: BehaviorSubject<any> = new BehaviorSubject<any>([]);
   FavList$: Observable<any> = this.FavList.asObservable();
@@ -20,18 +21,41 @@ export class HomeService {
 
   constructor(private weatherservice: WeatherserviceService) {}
 
-  addToFav(weathercitydata: any) {
+  addToFav(weathercitydata: any, state: any) {
     this.FavList.subscribe((res) => {
       this.data = res;
     });
     this.local = [];
-    this.local.push(weathercitydata);
-    if (this.data !== null) {
-      this.data.splice(0, 0, weathercitydata);
-    } else {
-      this.data = this.local;
+    let body;
+    if (state === 'home') {
+      body = {
+        name: weathercitydata?.location?.name,
+        region: weathercitydata?.location?.region,
+        icon: weathercitydata?.current?.condition?.icon,
+        temp_c: weathercitydata?.current?.temp_c,
+        text: weathercitydata?.current?.condition?.text,
+      };
+      this.local.push(body);
+      if (this.data !== null) {
+        this.data.splice(0, 0, body);
+      } else {
+        this.data = this.local;
+      }
+    } else if (state === 'favList') {
+      body = {
+        name: weathercitydata?.name,
+        region: weathercitydata?.region,
+        icon: weathercitydata?.icon,
+        temp_c: weathercitydata?.temp_c,
+        text: weathercitydata?.text,
+      };
+      this.local.push(body);
+      if (this.data !== null) {
+        this.data.splice(0, 0, body);
+      } else {
+        this.data = this.local;
+      }
     }
-
     this.FavList.next(this.data);
     localStorage.setItem('favData', JSON.stringify(this.data));
   }
@@ -40,12 +64,10 @@ export class HomeService {
     this.FavList.subscribe((res) => {
       this.data = res;
     });
-
     this.data.map((item: any, id: number) => {
-      if (item.location?.name === weathercitydata.location?.name) {
-        this.data = this.data.filter(
-          (ele: any) => ele.location?.name !== item.location?.name
-        );
+      if (item?.name === weathercitydata?.name) {
+        this.data = this.data.filter((ele: any) => ele?.name !== item?.name);
+        console.log('this.data.filter', this.data);
       }
     });
     this.FavList.next(this.data);
@@ -60,15 +82,18 @@ export class HomeService {
 
       let object: any = {
         favouritestate: false,
-        location: recentCity?.location,
-        current: recentCity?.current,
+        name: recentCity?.location?.name,
+        region: recentCity?.location?.region,
+        icon: recentCity?.current?.condition?.icon,
+        temp_c: recentCity?.current?.temp_c,
+        text: recentCity?.current?.condition?.text,
       };
       this.recentLocal = [];
       this.recentLocal.push(object);
       if (this.recentArray) {
         let recentstate = true;
         this.recentArray.map((item: any) => {
-          if (item.location?.name === recentCity?.location?.name) {
+          if (item?.name === recentCity?.location?.name) {
             recentstate = false;
           }
         });
@@ -76,7 +101,7 @@ export class HomeService {
           this.recentArray.splice(0, 0, object);
         } else {
           this.recentArray = this.recentArray.filter(
-            (ele: any) => ele.location?.name !== recentCity.location?.name
+            (ele: any) => ele?.name !== recentCity.location?.name
           );
           this.recentArray.splice(0, 0, object);
         }
@@ -96,28 +121,36 @@ export class HomeService {
     this.FavList.subscribe((res) => {
       this.data = res;
     });
+    let favbody;
+    favbody = {
+      name: weathercitydata?.location?.name,
+      region: weathercitydata?.location?.region,
+      icon: weathercitydata?.current?.condition?.icon,
+      temp_c: weathercitydata?.current?.temp_c,
+      text: weathercitydata?.current?.condition?.text,
+    };
     if (this.data) {
       let recentstate = false;
       this.data.map((item: any) => {
-        if (item.location?.name === weathercitydata?.location?.name) {
+        if (item?.name === weathercitydata?.location?.name) {
           recentstate = true;
         }
       });
       if (recentstate) {
         let index: any;
         this.data.find((ele: any, id: number) => {
-          if (ele.location?.name === weathercitydata.location?.name) index = id;
+          if (ele?.name === weathercitydata.location?.name) index = id;
         });
         if (index == 0) {
           if (this.data.length == 1) {
             let body = [];
-            body.push(weathercitydata);
+            body.push(favbody);
             this.data = body;
           } else if (this.data.length >= 1) {
-            this.data[index] = weathercitydata;
+            this.data[index] = favbody;
           }
         } else if (index >= 1) {
-          this.data[index] = weathercitydata;
+          this.data[index] = favbody;
         }
       }
     }
